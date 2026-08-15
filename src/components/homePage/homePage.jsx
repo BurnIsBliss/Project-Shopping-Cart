@@ -7,6 +7,7 @@ export default function HomePage() {
 				Click the link below to visit the shop before you miss the{" "}
 				<br /> DEALS OF YOUR LIFE.
 			</p>
+			<button>Shop now {">"}</button>
 		</div>
 	);
 }
