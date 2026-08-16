@@ -1,0 +1,38 @@
+.mainContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.imgStyle {
+	height: 150px;
+	margin-top: 20px;
+	margin-left: 10px;
+	border: 1.5px solid #cad3f5;
+	border-radius: 8px;
+}
+
+.mainContainer span {
+	text-decoration: underline;
+	font-weight: 700;
+	font-style: italic;
+}
+
+.mainContainer p {
+	text-align: center;
+}
+
+.mainContainer a:hover {
+	text-decoration: none;
+}
+
+.mainContainer > h1 {
+	text-decoration: underline;
+	font-size: 32px;
+	font-weight: 500;
+}
+
+.imageContainer2 {
+	border-color: red;
+}

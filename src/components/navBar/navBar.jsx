@@ -3,7 +3,7 @@ export default function NavBar() {
 		<div>
 			<ul>
 				<li>
-					<a href="/">Home page</a>
+					<a href="/">Home</a>
 				</li>
 				<li>
 					<a href="shop">Shop</a>

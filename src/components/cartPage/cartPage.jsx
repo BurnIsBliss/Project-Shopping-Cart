@@ -1,7 +1,7 @@
-export default function CartPage() {
+export default function CartPage({ cartCount = 0 }) {
 	return (
 		<div>
-			<h1>This is the cart page</h1>
+			<h1>This is the cart page {cartCount}</h1>
 		</div>
 	);
 }
