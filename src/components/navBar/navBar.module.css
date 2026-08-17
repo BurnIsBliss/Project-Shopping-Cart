@@ -1,0 +1,27 @@
+.navBarContainer div a {
+	text-decoration: none;
+	border: 1px solid wheat;
+	padding: 5px 20px;
+	border-radius: 4px;
+	transition: 0.5s ease-in-out;
+	transition-property: color, "background-color";
+}
+
+.navBarContainer {
+	list-style-type: none;
+	display: flex;
+	margin-top: 20px;
+	justify-content: center;
+	padding: 0;
+	gap: 20px;
+	align-items: center;
+}
+
+.navBarContainer div {
+	height: 100%;
+}
+
+.navBarContainer div a:hover {
+	background-color: wheat;
+	color: black;
+}

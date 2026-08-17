@@ -1,17 +1,18 @@
+import styles from "./navBar.module.css";
 export default function NavBar() {
 	return (
-		<div>
-			<ul>
-				<li>
+		<>
+			<div className={styles.navBarContainer}>
+				<div>
 					<a href="/">Home</a>
-				</li>
-				<li>
+				</div>
+				<div>
 					<a href="shop">Shop</a>
-				</li>
-				<li>
+				</div>
+				<div>
 					<a href="cart">Cart</a>
-				</li>
-			</ul>
-		</div>
+				</div>
+			</div>
+		</>
 	);
 }
