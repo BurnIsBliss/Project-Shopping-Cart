@@ -23,8 +23,14 @@
 	text-align: center;
 }
 
+.mainContainer a {
+	transition: 0.5s ease-in-out;
+}
+
 .mainContainer a:hover {
 	text-decoration: none;
+	transform: scale(1.2);
+	color: deeppink;
 }
 
 .mainContainer > h1 {
@@ -33,6 +39,10 @@
 	font-weight: 500;
 }
 
-.imageContainer2 {
-	border-color: red;
+.div247 {
+	transition: 01s ease-in-out;
+}
+
+.showing {
+	margin-top: 10px;
 }

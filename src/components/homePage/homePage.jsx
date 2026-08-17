@@ -1,6 +1,14 @@
 import styles from "./homePage.module.css";
+import { useEffect } from "react";
 
 export default function HomePage() {
+	useEffect(() => {
+		function showHide() {
+			document.querySelector("#toggle").classList.toggle(styles.showing);
+			console.log(document.querySelector("#toggle"));
+		}
+		setInterval(showHide, 1000);
+	});
 	return (
 		<div className={styles.mainContainer}>
 			<h1>Guaranteed Saving and Guaranteed Smiles</h1>
@@ -21,16 +29,16 @@ export default function HomePage() {
 				/>
 				<img
 					src="../src/images/openShop.jpg"
-					alt="Open 24x7"
+					alt="Open shop"
 					className={styles.imgStyle}
 				/>
 				<img
 					src="../src/images/BuyNow.jpg"
-					alt="Open 24x7"
+					alt="Buy now"
 					className={styles.imgStyle}
 				/>
 			</div>
-			<div className={styles.imageContainer2}>
+			<div className={styles.div247} id="toggle">
 				<img
 					src="../src/images/open247.jpg"
 					alt="Open 24x7"
