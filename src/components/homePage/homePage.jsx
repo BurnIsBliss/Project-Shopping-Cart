@@ -5,9 +5,12 @@ export default function HomePage() {
 	useEffect(() => {
 		function showHide() {
 			document.querySelector("#toggle").classList.toggle(styles.showing);
-			console.log(document.querySelector("#toggle"));
 		}
-		setInterval(showHide, 1000);
+		const intervalID = setInterval(showHide, 1000);
+
+		return () => {
+			clearInterval(intervalID);
+		};
 	});
 	return (
 		<div className={styles.mainContainer}>
