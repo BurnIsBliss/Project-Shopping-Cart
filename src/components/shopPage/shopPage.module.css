@@ -1,0 +1,19 @@
+.counterContainer {
+	display: flex;
+	gap: 05px;
+	justify-content: center;
+	align-items: center;
+}
+
+.counterContainer input {
+	width: 60px;
+	height: 20px;
+	background-color: white;
+	color: black;
+}
+
+.counterContainer button {
+	height: 25px;
+	color: black;
+	background-color: cornsilk;
+}
