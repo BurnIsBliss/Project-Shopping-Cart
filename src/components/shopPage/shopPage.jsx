@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./shopPage.module.css";
+import { setVal, getVal } from "../../utils/sessionStorageHelper";
 
 /*3. Shop page:
-   a. Build individual card elements for each of the products.
-   b. Should have an input field, to enter the no. of items to buy
-   c. Also, an increment and decrement button next to it.
-   d. Must have a title,
    e. And an 'Add to Cart' button.`;*/
 
 export default function ShopPage() {
@@ -39,9 +36,8 @@ export default function ShopPage() {
 		);
 }
 function Card({ cardContents }) {
-	console.log(cardContents);
 	return (
-		<div className={styles.cardContainer}>
+		<div className={styles.cardContainer} id={cardContents.id}>
 			<div>{cardContents.title}</div>
 			<img
 				src={cardContents.image}
@@ -51,7 +47,19 @@ function Card({ cardContents }) {
 			/>
 			<div>{`$${cardContents.price}`}</div>
 			<Counter />
-			<div>Add to cart</div>
+			<button
+				className={styles.buttonStyle}
+				onClick={buttonFunctionality}
+			>
+				Add to Cart
+			</button>
+			<button
+				onClick={function () {
+					sessionStorage.removeItem("cartItems");
+				}}
+			>
+				Session Storage
+			</button>
 		</div>
 	);
 }
@@ -89,4 +97,25 @@ function Counter() {
 			</div>
 		</>
 	);
+}
+
+function buttonFunctionality(e) {
+	const parentElement = e.currentTarget.parentElement;
+	const childDivElements = parentElement.querySelectorAll("div");
+	const inputElement = parentElement.querySelector("input");
+	const newObj = new Object();
+	newObj[parentElement.id] = {
+		title: childDivElements[0].innerText,
+		price: childDivElements[1].innerText.slice(1),
+		quantity: inputElement.value,
+	};
+
+	const data = getVal("cartItems");
+	if (data === null) {
+		setVal("cartItems", JSON.stringify(newObj));
+	} else {
+		const parsedData = JSON.parse(data);
+		const newData = Object.assign(parsedData, newObj);
+		setVal("cartItems", JSON.stringify(newData));
+	}
 }
