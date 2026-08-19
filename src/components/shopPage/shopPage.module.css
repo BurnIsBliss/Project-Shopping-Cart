@@ -19,12 +19,23 @@
 }
 
 .cardContainer {
-	height: 250px;
-	width: 200px;
+	height: 400px;
+	width: 250px;
+	border-radius: 4px;
+	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 5px;
+	gap: 10px;
 	border: 1px solid red;
+	text-align: center;
+}
+
+.shopContainer {
+	display: flex;
+	margin: 0 20px;
+	gap: 20px;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }

@@ -31,27 +31,28 @@ export default function ShopPage() {
 		);
 	} else
 		return (
-			<div>
-				<Card cardContents={shopItems[0]} />
+			<div className={styles.shopContainer}>
+				{shopItems.map((item) => {
+					return <Card key={item.id} cardContents={item} />;
+				})}
 			</div>
 		);
 }
 function Card({ cardContents }) {
 	console.log(cardContents);
 	return (
-		<>
-			<div className={styles.cardContainer}>
-				<div>{cardContents.title}</div>
-				<img
-					src={cardContents.image}
-					alt={cardContents.title}
-					height={200}
-				/>
-				<div>{`$${cardContents.price}`}</div>
-				<Counter />
-				<div>link</div>
-			</div>
-		</>
+		<div className={styles.cardContainer}>
+			<div>{cardContents.title}</div>
+			<img
+				src={cardContents.image}
+				alt={cardContents.title}
+				height={250}
+				width={200}
+			/>
+			<div>{`$${cardContents.price}`}</div>
+			<Counter />
+			<div>Add to cart</div>
+		</div>
 	);
 }
 
