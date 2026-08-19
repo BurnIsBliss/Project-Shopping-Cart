@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./shopPage.module.css";
 
 /*3. Shop page:
@@ -9,18 +9,45 @@ import styles from "./shopPage.module.css";
    e. And an 'Add to Cart' button.`;*/
 
 export default function ShopPage() {
-	return (
-		<div>
-			<Card />
-		</div>
-	);
+	const [shopItems, setShopItems] = useState([]);
+	useEffect(() => {
+		(async () => {
+			try {
+				const response = await fetch(
+					"https://fakestoreapi.com/products",
+				);
+				const result = await response.json();
+				setShopItems(result);
+			} catch (error) {
+				console.log(error);
+			}
+		})();
+	}, []);
+	if (!shopItems.length) {
+		return (
+			<>
+				<div>Loading...</div>
+			</>
+		);
+	} else
+		return (
+			<div>
+				<Card cardContents={shopItems[0]} />
+			</div>
+		);
 }
-function Card() {
+function Card({ cardContents }) {
+	console.log(cardContents);
 	return (
 		<>
-			<div>
-				<div>Title</div>
-				<div>image</div>
+			<div className={styles.cardContainer}>
+				<div>{cardContents.title}</div>
+				<img
+					src={cardContents.image}
+					alt={cardContents.title}
+					height={200}
+				/>
+				<div>{`$${cardContents.price}`}</div>
 				<Counter />
 				<div>link</div>
 			</div>
