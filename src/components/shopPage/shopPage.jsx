@@ -46,7 +46,7 @@ function Card({ cardContents }) {
 				width={200}
 			/>
 			<div>{`$${cardContents.price}`}</div>
-			<Counter />
+			<Counter cardID={cardContents.id} />
 			<button
 				className={styles.buttonStyle}
 				onClick={buttonFunctionality}
@@ -64,8 +64,14 @@ function Card({ cardContents }) {
 	);
 }
 
-function Counter() {
-	const [inputVal, setInputVal] = useState(0);
+function Counter({ cardID }) {
+	const data = getVal("cartItems");
+	let quantity = 0;
+	if (data !== null) {
+		const parsedData = JSON.parse(data);
+		if (parsedData[cardID]) quantity = Number(parsedData[cardID].quantity);
+	}
+	const [inputVal, setInputVal] = useState(quantity);
 
 	function handleChange(e) {
 		setInputVal(Number(e.target.value));
@@ -118,4 +124,8 @@ function buttonFunctionality(e) {
 		const newData = Object.assign(parsedData, newObj);
 		setVal("cartItems", JSON.stringify(newData));
 	}
+
+	const newData = getVal("cartItems");
+	console.clear();
+	console.table(JSON.parse(newData));
 }

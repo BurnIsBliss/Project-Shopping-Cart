@@ -20,3 +20,8 @@ Need to use react router, react testing, css modules, API promise etc.
 6. Test the app using React Testing Library.
 7. Style your application.
 8. Deploy
+
+Storage API:
+
+3. Need to change the cart count
+4. Shop implementation.
