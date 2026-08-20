@@ -1,4 +1,5 @@
 import styles from "./navBar.module.css";
+
 export default function NavBar() {
 	return (
 		<>
@@ -10,7 +11,9 @@ export default function NavBar() {
 					<a href="shop">Shop</a>
 				</div>
 				<div>
-					<a href="cart">Cart</a>
+					<a href="cart" id="navCart">
+						Cart (0)
+					</a>
 				</div>
 			</div>
 		</>

@@ -10,6 +10,7 @@ Need to use react router, react testing, css modules, API promise etc.
 2. Think about the folder structure.
 3. Shop page:
    e. And an 'Add to Cart' button.
+   f. Make the button disabled when the quantity is 0.
 4. Cart page link on the nav bar:
    a. Must shown the the number of items in the cart.
    b. Should update in real time as the user adds/removes items from their cart.
@@ -20,6 +21,7 @@ Need to use react router, react testing, css modules, API promise etc.
 6. Test the app using React Testing Library.
 7. Style your application.
 8. Deploy
+9. Create an error page on React router.
 
 Storage API:
 

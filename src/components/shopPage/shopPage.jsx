@@ -56,6 +56,7 @@ function Card({ cardContents }) {
 			<button
 				onClick={function () {
 					sessionStorage.removeItem("cartItems");
+					sessionStorage.removeItem("total");
 				}}
 			>
 				Session Storage
@@ -126,6 +127,11 @@ function buttonFunctionality(e) {
 	}
 
 	const newData = getVal("cartItems");
-	console.clear();
-	console.table(JSON.parse(newData));
+	const newParsedData = JSON.parse(newData);
+
+	let total = 0;
+	for (const key in newParsedData) {
+		total += Number(newParsedData[key]["quantity"]);
+	}
+	document.querySelector("#navCart").innerText = `Cart (${total})`;
 }
