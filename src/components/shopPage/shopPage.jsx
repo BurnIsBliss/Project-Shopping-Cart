@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import styles from "./shopPage.module.css";
 import { setVal, getVal } from "../../utils/sessionStorageHelper";
 
-/*3. Shop page:
-   e. And an 'Add to Cart' button.`;*/
-
 export default function ShopPage() {
 	const [shopItems, setShopItems] = useState([]);
 	useEffect(() => {
@@ -99,7 +96,6 @@ function Counter({ cardID }) {
 					value={inputVal}
 					onChange={handleChange}
 				/>
-				{/* set default value using state */}
 				<button onClick={incrementCount}>+</button>
 			</div>
 		</>
@@ -133,5 +129,6 @@ function buttonFunctionality(e) {
 	for (const key in newParsedData) {
 		total += Number(newParsedData[key]["quantity"]);
 	}
+	setVal("total", JSON.stringify(total));
 	document.querySelector("#navCart").innerText = `Cart (${total})`;
 }

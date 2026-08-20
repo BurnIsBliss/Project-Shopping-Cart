@@ -1,6 +1,14 @@
+import { getVal } from "../../utils/sessionStorageHelper";
 import styles from "./navBar.module.css";
 
 export default function NavBar() {
+	const data = getVal("total");
+	let tot;
+	if (data !== null) {
+		tot = JSON.parse(data);
+	} else {
+		tot = 0;
+	}
 	return (
 		<>
 			<div className={styles.navBarContainer}>
@@ -12,7 +20,7 @@ export default function NavBar() {
 				</div>
 				<div>
 					<a href="cart" id="navCart">
-						Cart (0)
+						Cart ({tot})
 					</a>
 				</div>
 			</div>
