@@ -106,6 +106,10 @@ function buttonFunctionality(e) {
 	const parentElement = e.currentTarget.parentElement;
 	const childDivElements = parentElement.querySelectorAll("div");
 	const inputElement = parentElement.querySelector("input");
+	if (Number(inputElement.value) <= 0) {
+		alert('Enter a "quantity" greater than 1');
+		return;
+	}
 	const newObj = new Object();
 	newObj[parentElement.id] = {
 		title: childDivElements[0].innerText,
