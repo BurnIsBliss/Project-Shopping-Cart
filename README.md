@@ -19,5 +19,3 @@ Need to use react router, react testing, css modules, API promise etc.
 6. Style your application.
 7. Deploy
 8. Create an error page on React router.
-
-Storage API: 4. Shop implementation.
