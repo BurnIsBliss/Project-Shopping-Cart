@@ -1,4 +1,10 @@
 .buttonStyle {
 	padding: 5px 20px;
 	cursor: pointer;
+	transition: all 0.5s ease-in-out;
+}
+
+.buttonStyle:hover {
+	color: black;
+	background-color: wheat;
 }

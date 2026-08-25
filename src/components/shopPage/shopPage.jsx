@@ -45,11 +45,12 @@ function Card({ cardContents }) {
 			/>
 			<div>{`$${cardContents.price}`}</div>
 			<Counter cardID={cardContents.id} />
-			<ButtonComp buttonText={"Add to cart"} />
+			<ButtonComp buttonText={"Add to cart?"} />
 			<button
 				onClick={function () {
 					sessionStorage.removeItem("cartItems");
 					sessionStorage.removeItem("total");
+					sessionStorage.removeItem("grandTotal");
 				}}
 			>
 				Session Storage
