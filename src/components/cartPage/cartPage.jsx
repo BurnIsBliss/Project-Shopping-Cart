@@ -44,8 +44,9 @@ function CartCard({ itemDetails, idProp }) {
 			<div className={styles.cartCard}>
 				<div>{itemDetails.title}</div>
 				<div>${itemDetails.price}</div>
-				<div>{itemDetails.quantity}</div>
 				<Counter cardID={idProp} />
+				<div>Total</div>
+				<button>Delete item</button>
 			</div>
 		</>
 	);

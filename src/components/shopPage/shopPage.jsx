@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./shopPage.module.css";
-import { setVal, getVal } from "../../utils/sessionStorageHelper";
+import { getVal } from "../../utils/sessionStorageHelper";
+import ButtonComp from "../buttonComponenet/buttonComponent";
 
 export default function ShopPage() {
 	const [shopItems, setShopItems] = useState([]);
@@ -44,12 +45,7 @@ function Card({ cardContents }) {
 			/>
 			<div>{`$${cardContents.price}`}</div>
 			<Counter cardID={cardContents.id} />
-			<button
-				className={styles.buttonStyle}
-				onClick={buttonFunctionality}
-			>
-				Add to Cart
-			</button>
+			<ButtonComp buttonText={"Add to cart"} />
 			<button
 				onClick={function () {
 					sessionStorage.removeItem("cartItems");
@@ -100,41 +96,6 @@ function Counter({ cardID }) {
 			</div>
 		</>
 	);
-}
-
-function buttonFunctionality(e) {
-	const parentElement = e.currentTarget.parentElement;
-	const childDivElements = parentElement.querySelectorAll("div");
-	const inputElement = parentElement.querySelector("input");
-	if (Number(inputElement.value) <= 0) {
-		alert('Enter a "quantity" greater than 1');
-		return;
-	}
-	const newObj = new Object();
-	newObj[parentElement.id] = {
-		title: childDivElements[0].innerText,
-		price: childDivElements[1].innerText.slice(1),
-		quantity: inputElement.value,
-	};
-
-	const data = getVal("cartItems");
-	if (data === null) {
-		setVal("cartItems", JSON.stringify(newObj));
-	} else {
-		const parsedData = JSON.parse(data);
-		const newData = Object.assign(parsedData, newObj);
-		setVal("cartItems", JSON.stringify(newData));
-	}
-
-	const newData = getVal("cartItems");
-	const newParsedData = JSON.parse(newData);
-
-	let total = 0;
-	for (const key in newParsedData) {
-		total += Number(newParsedData[key]["quantity"]);
-	}
-	setVal("total", JSON.stringify(total));
-	document.querySelector("#navCart").innerText = `Cart (${total})`;
 }
 
 export { Counter };
