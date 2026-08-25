@@ -136,3 +136,5 @@ function buttonFunctionality(e) {
 	setVal("total", JSON.stringify(total));
 	document.querySelector("#navCart").innerText = `Cart (${total})`;
 }
+
+export { Counter };

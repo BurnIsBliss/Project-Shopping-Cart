@@ -1,8 +1,7 @@
 import styles from "./cartPage.module.css";
+import { Counter } from "../shopPage/shopPage";
 // Cart page
-//    a. Should display all the items and their quantities.
 //    b. Should allow the users to increase or decrease the quantity of items in their cart (including removal if appropriate).
-//    c. No need to implement any checkout/payment system.
 
 import { useState } from "react";
 import { getVal } from "../../utils/sessionStorageHelper";
@@ -25,21 +24,28 @@ export default function CartPage() {
 		);
 	return (
 		<div>
-			{Object.values(cartItems).map((item) => {
-				if (item.quantity > 0)
-					return <CartCard itemDetails={item} key={item.title} />;
+			{Object.entries(cartItems).map((item) => {
+				if (item[1].quantity > 0)
+					return (
+						<CartCard
+							itemDetails={item[1]}
+							key={item[0]}
+							idProp={item[0]}
+						/>
+					);
 			})}
 		</div>
 	);
 }
 
-function CartCard({ itemDetails }) {
+function CartCard({ itemDetails, idProp }) {
 	return (
 		<>
 			<div className={styles.cartCard}>
 				<div>{itemDetails.title}</div>
 				<div>${itemDetails.price}</div>
 				<div>{itemDetails.quantity}</div>
+				<Counter cardID={idProp} />
 			</div>
 		</>
 	);
