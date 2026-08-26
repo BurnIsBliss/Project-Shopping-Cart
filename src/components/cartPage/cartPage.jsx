@@ -14,7 +14,6 @@ export default function CartPage() {
 
 	const [cartItems, setCartItems] = useState(data);
 	const [grandTotal, setGrandTotal] = useState(JSON.parse(grandTot));
-	console.table(Object.values(cartItems).length);
 	if (cartItems == null || !Object.values(cartItems).length)
 		return (
 			<>
@@ -46,7 +45,7 @@ export default function CartPage() {
 	function deleteItem(e) {
 		const parentElement = e.currentTarget.parentElement;
 		const parentID = parentElement.id;
-		const newObj = cartItems;
+		const newObj = { ...cartItems };
 		delete newObj[parentID];
 		setVal("cartItems", JSON.stringify(newObj));
 		setCartItems(newObj);
