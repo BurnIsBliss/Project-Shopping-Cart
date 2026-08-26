@@ -16,7 +16,7 @@ export default function CartPage() {
 	if (grandTot === null) grandTot = 0;
 
 	const [cartItems, setCartItems] = useState(data);
-	const [grandTotal, setGrandTotal] = useState(grandTot);
+	const [grandTotal, setGrandTotal] = useState(JSON.parse(grandTot));
 	if (cartItems == null)
 		return (
 			<>
@@ -41,7 +41,7 @@ export default function CartPage() {
 						/>
 					);
 			})}
-			<div>Grand total: ${grandTotal}</div>
+			<div>Grand total: ${Number(grandTotal)}</div>
 		</div>
 	);
 
