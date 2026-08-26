@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./shopPage.module.css";
 import { getVal } from "../../utils/sessionStorageHelper";
-import ButtonComp from "../buttonComponenet/buttonComponent";
+import ButtonComp from "../buttonComponent/buttonComponent";
 
 export default function ShopPage() {
 	const [shopItems, setShopItems] = useState([]);

@@ -1,9 +1,6 @@
 import styles from "./cartPage.module.css";
 import { Counter } from "../shopPage/shopPage";
-import ButtonComp from "../buttonComponenet/buttonComponent";
-// Cart page
-//    b. Should allow the users to increase or decrease the quantity of items in their cart (including removal if appropriate).
-
+import ButtonComp from "../buttonComponent/buttonComponent";
 import { useState } from "react";
 import { getVal, setVal } from "../../utils/sessionStorageHelper";
 
@@ -17,7 +14,8 @@ export default function CartPage() {
 
 	const [cartItems, setCartItems] = useState(data);
 	const [grandTotal, setGrandTotal] = useState(JSON.parse(grandTot));
-	if (cartItems == null)
+	console.table(Object.values(cartItems).length);
+	if (cartItems == null || !Object.values(cartItems).length)
 		return (
 			<>
 				<div>
@@ -45,7 +43,30 @@ export default function CartPage() {
 		</div>
 	);
 
-	function deleteItem() {}
+	function deleteItem(e) {
+		const parentElement = e.currentTarget.parentElement;
+		const parentID = parentElement.id;
+		const newObj = cartItems;
+		delete newObj[parentID];
+		setVal("cartItems", JSON.stringify(newObj));
+		setCartItems(newObj);
+		const newData = getVal("cartItems");
+		const newParsedData = JSON.parse(newData);
+
+		let total = 0,
+			grandTotal = 0;
+		for (const key in newParsedData) {
+			total += Number(newParsedData[key]["quantity"]);
+			grandTotal +=
+				Number(newParsedData[key]["quantity"]) *
+				Number(newParsedData[key]["price"]);
+		}
+		grandTotal = grandTotal.toFixed(2);
+		setVal("total", JSON.stringify(total));
+		setVal("grandTotal", JSON.stringify(grandTotal));
+		setGrandTotal(grandTotal);
+		document.querySelector("#navCart").innerText = `Cart (${total})`;
+	}
 }
 
 function CartCard({ itemDetails, idProp, func, funcArray }) {
