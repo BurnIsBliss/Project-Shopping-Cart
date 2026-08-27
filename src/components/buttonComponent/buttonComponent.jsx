@@ -2,16 +2,28 @@ import styles from "./buttonComponent.module.css";
 import { setVal, getVal } from "../../utils/sessionStorageHelper";
 
 export default function ButtonComp({ buttonText, funcArray = [] }) {
-	return (
-		<>
-			<button
-				className={styles.buttonStyle}
-				onClick={buttonFunctionality}
-			>
-				{buttonText}
-			</button>
-		</>
-	);
+	if (!funcArray.length)
+		return (
+			<>
+				<button
+					className={styles.buttonStyle}
+					onClick={buttonFunctionality}
+				>
+					{buttonText}
+				</button>
+			</>
+		);
+	else
+		return (
+			<>
+				<button
+					className={styles.buttonStyle}
+					onClick={buttonFunctionality2}
+				>
+					{buttonText}
+				</button>
+			</>
+		);
 
 	function buttonFunctionality(e) {
 		const parentElement = e.currentTarget.parentElement;
@@ -39,6 +51,48 @@ export default function ButtonComp({ buttonText, funcArray = [] }) {
 		}
 
 		const newData = getVal("cartItems");
+		const newParsedData = JSON.parse(newData);
+
+		let total = 0,
+			grandTotal = 0;
+		for (const key in newParsedData) {
+			total += Number(newParsedData[key]["quantity"]);
+			grandTotal +=
+				Number(newParsedData[key]["quantity"]) *
+				Number(newParsedData[key]["price"]);
+		}
+		grandTotal = grandTotal.toFixed(2);
+		setVal("total", JSON.stringify(total));
+		setVal("grandTotal", JSON.stringify(grandTotal));
+		document.querySelector("#navCart").innerText = `Cart (${total})`;
+
+		if (funcArray.length) {
+			funcArray[1](grandTotal);
+			funcArray[0](newParsedData);
+		}
+	}
+
+	function buttonFunctionality2(e) {
+		const parentElement = e.currentTarget.parentElement;
+		const inputElement = parentElement.querySelector("input");
+		if (Number(inputElement.value) <= 0) {
+			alert('Enter a "quantity" greater than 1');
+			window.location.reload();
+			return;
+		}
+		const newObj = new Object();
+
+		const data = getVal("cartItems");
+		const parsedData = JSON.parse(data);
+		newObj[parentElement.id] = {
+			title: parsedData[parentElement.id].title,
+			price: Number(parsedData[parentElement.id].price),
+			quantity: inputElement.value,
+		};
+		let newData = Object.assign(parsedData, newObj);
+		setVal("cartItems", JSON.stringify(newData));
+
+		newData = getVal("cartItems");
 		const newParsedData = JSON.parse(newData);
 
 		let total = 0,
