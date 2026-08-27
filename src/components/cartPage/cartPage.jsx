@@ -26,19 +26,23 @@ export default function CartPage() {
 		);
 	return (
 		<div>
-			{Object.entries(cartItems).map((item) => {
-				if (item[1].quantity > 0)
-					return (
-						<CartCard
-							itemDetails={item[1]}
-							key={item[0]}
-							idProp={item[0]}
-							func={deleteItem}
-							funcArray={[setCartItems, setGrandTotal]}
-						/>
-					);
-			})}
-			<div>Grand total: ${Number(grandTotal)}</div>
+			<div className={styles.cardContainer}>
+				{Object.entries(cartItems).map((item) => {
+					if (item[1].quantity > 0)
+						return (
+							<CartCard
+								itemDetails={item[1]}
+								key={item[0]}
+								idProp={item[0]}
+								func={deleteItem}
+								funcArray={[setCartItems, setGrandTotal]}
+							/>
+						);
+				})}
+			</div>
+			<div className={styles.grandTotal}>
+				Grand total: <span>${Number(grandTotal)}</span>
+			</div>
 		</div>
 	);
 
@@ -72,15 +76,29 @@ function CartCard({ itemDetails, idProp, func, funcArray }) {
 	return (
 		<>
 			<div className={styles.cartCard} id={idProp}>
-				<div>{itemDetails.title}</div>
-				<div>${itemDetails.price}</div>
-				<Counter cardID={idProp} />
-				<div>Total: ${itemDetails.price * itemDetails.quantity}</div>
-				<ButtonComp
-					buttonText={"Change quantity?"}
-					funcArray={funcArray}
-				/>
-				<button onClick={func}>Delete item</button>
+				<div>
+					<h3>{itemDetails.title}</h3>
+					<h4>${itemDetails.price}/unit</h4>
+				</div>
+				<div className={styles.miniContainer}>
+					<div className={styles.counter}>
+						<Counter cardID={idProp} />
+						<ButtonComp
+							buttonText={"Change quantity?"}
+							funcArray={funcArray}
+						/>
+					</div>
+					<button onClick={func} className={styles.deleteButton}>
+						Delete item
+					</button>
+					<div className={styles.total}>
+						Total:
+						<span>
+							{" "}
+							${itemDetails.price * itemDetails.quantity}
+						</span>
+					</div>
+				</div>
 			</div>
 		</>
 	);
