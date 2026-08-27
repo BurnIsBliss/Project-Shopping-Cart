@@ -5,11 +5,13 @@ import HomePage from "./components/homePage/homePage";
 import NavBar from "./components/navBar/navBar";
 import CartPage from "./components/cartPage/cartPage";
 import ShopPage from "./components/shopPage/shopPage";
+import ErrorPage from "./components/errorPage/errorPage";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <HomePage />,
+		errorElement: <ErrorPage />,
 	},
 	{
 		path: "cart",

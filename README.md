@@ -9,4 +9,3 @@ Need to use react router, react testing, css modules, API promise etc.
 2. Think about the folder structure.
 3. Test the app using React Testing Library.
 4. Deploy
-5. Create an error page on React router.
