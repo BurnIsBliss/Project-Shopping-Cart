@@ -48,9 +48,9 @@ export default function CartPage() {
 
 	function deleteItem(e) {
 		const parentElement = e.currentTarget.parentElement;
-		const parentID = parentElement.id;
+		const elementID = parentElement.firstChild.id;
 		const newObj = { ...cartItems };
-		delete newObj[parentID];
+		delete newObj[elementID];
 		setVal("cartItems", JSON.stringify(newObj));
 		setCartItems(newObj);
 		const newData = getVal("cartItems");
@@ -75,13 +75,13 @@ export default function CartPage() {
 function CartCard({ itemDetails, idProp, func, funcArray }) {
 	return (
 		<>
-			<div className={styles.cartCard} id={idProp}>
+			<div className={styles.cartCard}>
 				<div>
 					<h3>{itemDetails.title}</h3>
 					<h4>${itemDetails.price}/unit</h4>
 				</div>
 				<div className={styles.miniContainer}>
-					<div className={styles.counter}>
+					<div className={styles.counter} id={idProp}>
 						<Counter cardID={idProp} />
 						<ButtonComp
 							buttonText={"Change quantity?"}
