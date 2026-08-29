@@ -14,7 +14,7 @@ export default function HomePage() {
 	});
 	return (
 		<div className={styles.mainContainer}>
-			<h1>Guaranteed Saving and Guaranteed Smiles</h1>
+			<h1>Guaranteed Savings and Guaranteed Smiles</h1>
 			<p>
 				Head to our shop for <span>GREAT</span> products at{" "}
 				<span>GREAT</span> discounts.
