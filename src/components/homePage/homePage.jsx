@@ -1,5 +1,9 @@
 import styles from "./homePage.module.css";
 import { useEffect } from "react";
+import BuyNow from "../../../public/images/BuyNow.jpg";
+import Discount from "../../../public/images/Discount.jpg";
+import open247 from "../../../public/images/open247.jpg";
+import openShop from "../../../public/images/openShop.jpg";
 
 export default function HomePage() {
 	useEffect(() => {
@@ -26,24 +30,20 @@ export default function HomePage() {
 			<a href="shop">Click me!</a>
 			<div>
 				<img
-					src="/public/images/Discount.jpg"
+					src={Discount}
 					alt="50% discount"
 					className={styles.imgStyle}
 				/>
 				<img
-					src="/public/images/openShop.jpg"
+					src={openShop}
 					alt="Open shop"
 					className={styles.imgStyle}
 				/>
-				<img
-					src="/public/images/BuyNow.jpg"
-					alt="Buy now"
-					className={styles.imgStyle}
-				/>
+				<img src={BuyNow} alt="Buy now" className={styles.imgStyle} />
 			</div>
 			<div className={styles.div247} id="toggle">
 				<img
-					src="/public/images/open247.jpg"
+					src={open247}
 					alt="Open 24x7"
 					className={styles.imgStyle}
 				/>
