@@ -17,11 +17,11 @@ export default function CartPage() {
 	if (cartItems == null || !Object.values(cartItems).length)
 		return (
 			<>
-				<div>
+				<p>
 					The cart is empty! Head to the <a href="shop">shop</a> to
 					start adding items. <br />
 					Thank you!
-				</div>
+				</p>
 			</>
 		);
 	return (
