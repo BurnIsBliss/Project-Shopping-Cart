@@ -26,24 +26,24 @@ export default function HomePage() {
 			<a href="shop">Click me!</a>
 			<div>
 				<img
-					src="../src/images/Discount.jpg"
+					src="/src/images/Discount.jpg"
 					alt="50% discount"
 					className={styles.imgStyle}
 				/>
 				<img
-					src="../src/images/openShop.jpg"
+					src="/src/images/openShop.jpg"
 					alt="Open shop"
 					className={styles.imgStyle}
 				/>
 				<img
-					src="../src/images/BuyNow.jpg"
+					src="/src/images/BuyNow.jpg"
 					alt="Buy now"
 					className={styles.imgStyle}
 				/>
 			</div>
 			<div className={styles.div247} id="toggle">
 				<img
-					src="../src/images/open247.jpg"
+					src="/src/images/open247.jpg"
 					alt="Open 24x7"
 					className={styles.imgStyle}
 				/>
